@@ -1,0 +1,12 @@
+{
+  "name": "tdd-practices",
+  "version": "0.0.1",
+  "author": "Hung Pham <hungpm.percy@gmail.com>",
+  "license": "UNLICENSED",
+  "scripts": {
+    "test": "jest --watchAll"
+  },
+  "dependencies": {
+    "jest": "^24.8.0"
+  }
+}
