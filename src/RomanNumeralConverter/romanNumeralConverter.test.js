@@ -7,6 +7,11 @@ describe("romanNumeralConverter", () => {
       expect(convertNonIntText).toThrowError("Invalid Input");
     });
 
+    it("should throw error if input is less than '0'", () => {
+      const convertZero = () => converter.toRomanNum("-1");
+      expect(convertZero).toThrowError("Invalid Input");
+    });
+
     it("should throw error if input is '0'", () => {
       const convertZero = () => converter.toRomanNum("0");
       expect(convertZero).toThrowError("Invalid Input");
@@ -37,6 +42,30 @@ describe("romanNumeralConverter", () => {
 
     it("should convert number that has 'one before' to roman num correctly", () => {
       expect(converter.toRomanNum("3949")).toBe("MMMCMXLIX");
+    });
+  });
+
+  describe("convert roman num to normal num", () => {
+    it("should throw error if input is empty string", () => {
+      const convertEmptyString = () => converter.toIntNum("");
+      expect(convertEmptyString).toThrowError("Invalid Input");
+    });
+
+    it("should throw error if input doesn't contain roman character", () => {
+      const convertNonRomanNumText = () => converter.toIntNum("not Roman Num");
+      expect(convertNonRomanNumText).toThrowError("Invalid Input");
+    });
+
+    it("should convert 'I' to 1", () => {
+      expect(converter.toIntNum("I")).toBe(1);
+    });
+
+    it("should convert 'CXXIII' to 123", () => {
+      expect(converter.toIntNum("CXXIII")).toBe(123);
+    });
+
+    it("should convert roman number that has 'one before' to int correctly", () => {
+      expect(converter.toIntNum("MMMCMXLIX")).toBe(3949);
     });
   });
 });
